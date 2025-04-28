@@ -7,7 +7,8 @@ const path = require('path');
 const PORT = process.env.PORT;
 const expressSession = require("express-session");
 const flash = require("connect-flash");
-
+const indexRouter = require('./routes/index-router');
+const productRouter = require('./routes/product-router')
 
 app.set('view engine', 'ejs');
 app.use(express.json());
@@ -21,6 +22,9 @@ app.use(
    })
 );
 app.use(flash());
+
+app.use('/', indexRouter);
+app.use('/product', productRouter);
 
 app.listen(PORT, (err)=>{
    if(err) return console.log(err);
