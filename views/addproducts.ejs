@@ -69,10 +69,10 @@
   <!-- Form -->
   <div class="form-container">
     <h2 class="form-title">Add New Product</h2>
-    <form autocomplete="off" action="/product/create" method="post">
+    <form autocomplete="off" action="/product/create" method="post" enctype="multipart/form-data">
       <div class="mb-3">
         <label for="image" class="form-label">Product Image</label>
-        <input class="form-control" type="file" id="productImage">
+        <input class="form-control" name="image" type="file" value="Select File" id="productImage">
       </div>
 
       <div class="mb-3">
