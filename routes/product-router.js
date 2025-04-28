@@ -7,9 +7,10 @@ router.get('/', (req, res)=> {
 
 router.post('/create', async (req, res)=> {
    try{
-      let {image, Actual_Price, Selling_Percentage, Discount_Percentage, Description, type} = req.body;
+      let {image, Name, Actual_Price, Selling_Price, Discount_Percentage, Description, type} = req.body;
       let createdProduct = await productModel.create({
          image,
+         Name,
          Actual_Price,
          Selling_Price,
          Discount_Percentage,
