@@ -11,7 +11,7 @@ router.post('/create', async (req, res)=> {
       let createdProduct = await productModel.create({
          image,
          Actual_Price,
-         Selling_Percentage,
+         Selling_Price,
          Discount_Percentage,
          Description,
          type

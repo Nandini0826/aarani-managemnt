@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>View Products</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f9e5ea; /* Soft Pink Marble */
+    }
+    .product-card {
+      background: white;
+      border: 1px solid #d4af37;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(212, 175, 55, 0.2);
+      margin-bottom: 30px;
+      padding: 20px;
+      transition: transform 0.3s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(212, 175, 55, 0.3);
+    }
+    .product-image {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    .price {
+      color: #d4af37;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    .original-price {
+      text-decoration: line-through;
+      color: gray;
+      margin-left: 10px;
+    }
+    .discount {
+      background-color: #d4af37;
+      color: white;
+      padding: 3px 8px;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      margin-left: 10px;
+    }
+    .product-title {
+      margin-top: 15px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #6c757d;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container py-5">
+    <h1 class="text-center mb-5" style="color: #d4af37;">Our Collections</h1>
+    <div id="productsList"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+
+ 
+
+</body>
+</html>
