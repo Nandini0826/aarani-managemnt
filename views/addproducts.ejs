@@ -69,32 +69,32 @@
   <!-- Form -->
   <div class="form-container">
     <h2 class="form-title">Add New Product</h2>
-    <form autocomplete="off" action="/create" method="post">
+    <form autocomplete="off" action="/product/create" method="post" enctype="multipart/form-data">
       <div class="mb-3">
         <label for="image" class="form-label">Product Image</label>
-        <input class="form-control" type="file" id="productImage">
+        <input class="form-control" name="image" type="file" value="Select File" id="productImage">
       </div>
 
       <div class="mb-3">
         <label for="productName" class="form-label">Product Name</label>
-        <input type="text" class="form-control" id="productName" placeholder="Enter product name">
+        <input type="text" class="form-control" name="Name" id="productName" placeholder="Enter product name">
       </div>
 
       <div class="mb-3">
         <label for="Description" class="form-label">Product Details</label>
-        <input type="text" class="form-control" id="productDetails" placeholder="Enter product details">
+        <input type="text" class="form-control" id="productDetails" name="Description" placeholder="Enter product details">
       </div>
 
       <div class="mb-3">
         <label for="type" class="form-label">Category</label>
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="sarees" id="sarees">
+            <input class="form-check-input" type="radio" name="type" value="Sarees" id="sarees">
             <label class="form-check-label" for="sarees">
               Sarees
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="sarees" id="bags" checked>
+            <input class="form-check-input" type="radio" name="type" value="Bags" id="bags" checked>
             <label class="form-check-label" for="bags">
               Bags
             </label>
@@ -102,18 +102,18 @@
           </div>
 
       <div class="mb-3">
-        <label for="sellingPrice" class="form-label">Selling Price (₹)</label>
-        <input type="number" class="form-control" id="sellingPrice" placeholder="Enter selling price">
+        <label for="originalPrice" class="form-label">Original Price (₹)</label>
+        <input type="number" class="form-control" id="originalPrice" name="Actual_Price" placeholder="Enter original price">
       </div>
 
       <div class="mb-3">
-        <label for="originalPrice" class="form-label">Original Price (₹)</label>
-        <input type="number" class="form-control" id="originalPrice" placeholder="Enter original price">
+        <label for="sellingPrice" class="form-label">Selling Price (₹)</label>
+        <input type="number" class="form-control" id="sellingPrice" name="Selling_Price" placeholder="Enter selling price">
       </div>
 
       <div class="mb-3">
         <label for="discount" class="form-label">Discount Offered (%)</label>
-        <input type="number" class="form-control" id="discount" placeholder="Enter discount percentage">
+        <input type="number" class="form-control" id="discount" name="Discount_Percentage" placeholder="Enter discount percentage">
       </div>
 
       <div class="d-grid">

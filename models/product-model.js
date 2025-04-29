@@ -3,10 +3,8 @@ const mongoose = require('mongoose');
 let productSchema = mongoose.Schema({
    image: Buffer,
    Actual_Price: Number,
-   Selling_Percentage: {
-      type: Number,
-      default: 20
-   },
+   Name: String,
+   Selling_Price: Number,
    Discount_Percentage: {
       type: Number,
       default: 0
