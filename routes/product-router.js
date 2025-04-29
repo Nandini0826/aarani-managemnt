@@ -33,16 +33,52 @@ router.post('/create', upload.single('image'), async (req, res)=> {
    }
 });
 
-router.get('/update:id', async(req, res)=>{
-   
-})
+router.post('/update/:id', upload.single('image'), async (req, res) => {
+   try {
+     const productId = req.params.id;
+     const {
+       name,
+       Description,
+       type,
+       Actual_Price,
+       Selling_Price,
+       Discount_Percentage
+     } = req.body;
+ 
+     const updatedFields = {
+       name,
+       Description,
+       type,
+       Actual_Price,
+       Selling_Price,
+       Discount_Percentage
+     };
+ 
+     if (req.file) {
+       updatedFields.image = req.file.buffer;
+     }
+ 
+     await productModel.findByIdAndUpdate(productId, updatedFields);
+ 
+     const allProducts = await productModel.find({});
+     res.render('viewproduct', { products: allProducts });  // ✅ Pass "products"
+   } catch (error) {
+     console.error("Error updating product:", error);
+     res.status(500).send("Something went wrong");
+   }
+ });
+  
 
-router.post('/update:id', async(req, res)=>{
-
-});
-
-router.get('/delete:id', async(req, res)=>[
-
-])
+ router.get('/delete/:id', async (req, res) => {
+   let product = await productModel.findById(req.params.id);
+     if (!product) {
+       req.flash("Product not found");
+     } else {
+       await productModel.findByIdAndDelete(req.params.id);
+       res.redirect("/");
+       req.flash("product deleted Successfully!");
+     }
+ });
+ 
 
 module.exports = router;

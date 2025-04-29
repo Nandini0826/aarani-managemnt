@@ -13,7 +13,7 @@
     }
 
     body {
-      background-color: #ffffff; /* very light pink background */
+      background-color: #fcfde7; /* very light pink background */
     }
 
     .form-container {
@@ -55,18 +55,18 @@
 
       <div class="dropdown ms-auto">
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          View products
+          View Products
         </button>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">All Products</a></li>
-          <li><a class="dropdown-item" href="#">Sarees</a></li>
-          <li><a class="dropdown-item" href="#">Bags</a></li>
+          <li><a class="dropdown-item" href="/products">All Products</a></li>
+          <li><a class="dropdown-item" href="/products?type=Sarees">Sarees</a></li>
+          <li><a class="dropdown-item" href="/products?type=Bags">Bags</a></li>
         </ul>
       </div>
+      
     </div>
   </nav>
 
-  <!-- Form -->
   <div class="form-container">
     <h2 class="form-title">Add New Product</h2>
     <form autocomplete="off" action="/product/create" method="post" enctype="multipart/form-data">
