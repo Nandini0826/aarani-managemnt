@@ -67,9 +67,10 @@ router.post("/update/:id", upload.single("image"), async (req, res) => {
 
     //  const allProducts = await productModel.find({});
     //  res.render('viewproduct', { products: allProducts });  // ✅ Pass "products"
+    req.flash("success", "Product Updated");
     res.redirect("/products/All");
   } catch (error) {
-    console.error("Error updating product:", error);
+    console.error("Error updating product:", error.message);
     res.status(500).send("Something went wrong");
   }
 });
@@ -80,8 +81,8 @@ router.get("/delete/:id", async (req, res) => {
     req.flash("Product not found");
   } else {
     await productModel.findByIdAndDelete(req.params.id);
+    req.flash("success", "product deleted Successfully!");
     res.redirect("/products/All");
-    req.flash("product deleted Successfully!");
   }
 });
 
