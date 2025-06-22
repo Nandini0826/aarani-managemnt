@@ -2,7 +2,10 @@
 
 
 The **Aarani Management System** is a Node.js + Express.js powered backend application designed to efficiently manage products for a boutique or company. It helps you keep track of product details such as name, description, pricing, and availability in a secure and structured way using MongoDB.
-https://img.shields.io/badge/Bootstrap-563d7c?logo=bootstrap&logoColor=white https://img.shields.io/badge/EJS-yellowgreen 
+![Node.js](https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=white&style=flat)
+![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?logo=mongodb&logoColor=white&style=flat)
+![Express.js](https://img.shields.io/badge/-Express-black?logo=express&logoColor=white&style=flat)
+![ejs](https://img.shields.io/badge/EJS-yellowgreen)
 
 
 ## Table of Contents
