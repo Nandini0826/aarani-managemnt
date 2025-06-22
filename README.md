@@ -25,7 +25,9 @@ The **Aarani Management System** is a Node.js + Express.js powered backend appli
 ## 📦 Features
 
 - Add, edit, or delete products from the catalog  
-- Store and retrieve product descriptions and pricing  
+- Store and retrieve product descriptions and pricing
+- The project includes Multer, a Node.js middleware used for handling multipart/form-data, which is primarily used for uploading files.
+- The backend allows filtering of products using query parameters in the URL.
 - RESTful API endpoints for product operations  
 - MongoDB integration for persistent data storage  
 - Clean and modular Express-based architecture
