@@ -84,19 +84,19 @@
     <form autocomplete="off" action="/product/create" method="post" enctype="multipart/form-data">
       <div class="mb-3">
         <label for="image" class="form-label">Product Image</label>
-        <input class="form-control" name="image" type="file" value="Select File" id="productImage">
+        <input class="form-control" name="image" type="file" required value="Select File" id="productImage">
       </div>
 
       <div class="mb-3">
         <label for="productName" class="form-label">Product Name</label>
-        <input type="text" class="form-control" name="name" id="productName" placeholder="Enter product name">
+        <input type="text" class="form-control" name="name" required id="productName" placeholder="Enter product name">
       </div>
-
+      
       <div class="mb-3">
         <label for="Description" class="form-label">Product Details</label>
-        <input type="text" class="form-control" id="productDetails" name="Description" placeholder="Enter product details">
+        <textarea type="text" class="form-control" id="productDetails" name="Description" placeholder="Enter product details"></textarea>
       </div>
-
+      
       <div class="mb-3">
         <label for="type" class="form-label">Category</label>
         <div class="form-check">
@@ -111,16 +111,21 @@
               Bags
             </label>
           </div>
-          </div>
+        </div>
+        
+        <div class="mb-3">
+          <label for="group" class="form-label">Group</label>
+          <input type="text" class="form-control" name="group" required id="group" placeholder="Enter group name">
+      </div>
 
       <div class="mb-3">
         <label for="originalPrice" class="form-label">Original Price (₹)</label>
-        <input type="number" class="form-control" id="originalPrice" name="Actual_Price" placeholder="Enter original price">
+        <input type="number" class="form-control" id="originalPrice" required name="Actual_Price" placeholder="Enter original price">
       </div>
 
       <div class="mb-3">
         <label for="sellingPrice" class="form-label">Selling Price (₹)</label>
-        <input type="number" class="form-control" id="sellingPrice" name="Selling_Price" placeholder="Enter selling price">
+        <input type="number" class="form-control" id="sellingPrice" required name="Selling_Price" placeholder="Enter selling price">
       </div>
 
       <div class="mb-3">

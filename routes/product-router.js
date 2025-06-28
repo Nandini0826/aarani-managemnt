@@ -15,6 +15,7 @@ router.post("/create", upload.single("image"), async (req, res) => {
       Discount_Percentage,
       Description,
       type,
+      group,
     } = req.body;
     let createdProduct = await productModel.create({
       name,
@@ -24,6 +25,7 @@ router.post("/create", upload.single("image"), async (req, res) => {
       Discount_Percentage,
       Description,
       type,
+      group,
     });
 
     // res.send(createdProduct);
@@ -45,6 +47,7 @@ router.post("/update/:id", upload.single("image"), async (req, res) => {
       name,
       Description,
       type,
+      group,
       Actual_Price,
       Selling_Price,
       Discount_Percentage,
@@ -54,6 +57,7 @@ router.post("/update/:id", upload.single("image"), async (req, res) => {
       name,
       Description,
       type,
+      group,
       Actual_Price,
       Selling_Price,
       Discount_Percentage,
@@ -65,8 +69,6 @@ router.post("/update/:id", upload.single("image"), async (req, res) => {
 
     await productModel.findByIdAndUpdate(productId, updatedFields);
 
-    //  const allProducts = await productModel.find({});
-    //  res.render('viewproduct', { products: allProducts });  // ✅ Pass "products"
     req.flash("success", "Product Updated");
     res.redirect("/products/All");
   } catch (error) {

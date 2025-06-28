@@ -68,29 +68,60 @@
       <div class="col-lg-3 col-md-4 col-sm-6 product-item d-flex" data-category="<%= product.category %>">
         <div class="h-100 w-100 d-flex flex-column justify-content-between">
         <div class="product-card">
-          <img class="product-image" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="">
-          <div class="product-name">Name: <%= product.name %></div>
-          <div class="product-details">Details: <%= product.Description %></div>
-          <div class="product-category">Type: <%= product.type %></div>
-          <div class="product-originalprice">Actual Price: <%= product.Actual_Price %></div>
-          <div class="product-sp">Selling Price: <%= product.Selling_Price %></div>
-          <div class="product-discount">Discount: <%= product.Discount_Percentage %> %</div>
-          <div class="product-discount">Discounted Price: <%= product.Selling_Price-((product.Discount_Percentage/100) * product.Selling_Price)%></div>
+          <img class="product-image object-fit-fill" src="data:image/jpeg;base64,<%= product.image.toString('base64') %>" alt="">
+          <div class="product-name text-start"><span class="fw-bold">Name:</span> <%= product.name %></div>
+          <div class="product-details text-start"><span class="fw-bold">Details:</span> <%= product.Description %></div>
+          <div class="product-category text-start"><span class="fw-bold">Type:</span> <%= product.type %></div>
+          <div class="product-category text-start"><span class="fw-bold">Group:</span> <%= product.group %></div>
+          <div class="product-originalprice text-start"><span class="fw-bold">Actual Price:</span> <%= product.Actual_Price %></div>
+          <div class="product-sp text-start"><span class="fw-bold">Selling Price:</span> <%= product.Selling_Price %></div>
+          <div class="product-discount text-start"><span class="fw-bold">Discount:</span> <%= product.Discount_Percentage>0?product.Discount_Percentage+'%':'none' %></div>
+          <div class="product-discount text-start"><span class="fw-bold">Discounted Price:</span> <%= product.Selling_Price-((product.Discount_Percentage/100) * product.Selling_Price)%></div>
 
           <!-- Trigger Button -->
-          <button class="btn btn-warning" data-bs-toggle="collapse" data-bs-target="#editForm<%= index %>">Edit</button>
-          <a href="/product/delete/<%= product._id %>" class="btn btn-danger">Delete</a>
+        <div >
+          <button class="btn btn-warning w-75 m-auto mt-2" data-bs-toggle="collapse" data-bs-target="#editForm<%= index %>">Edit</button>
+          <a href="/product/delete/<%= product._id %>" class="btn btn-danger mt-2 w-75 m-auto">Delete</a>
+        </div>
 
 <!-- COLLAPSIBLE FORM -->
 <div class="collapse mt-3" id="editForm<%= index %>">
   <form action="/product/update/<%= product._id %>" method="POST" enctype="multipart/form-data">
     <div class="product-card">          
-      <input type="text" name="name" class="form-control mb-2" value="<%= product.name %>" required>
-      <textarea name="Description" class="form-control mb-2"><%= product.Description %></textarea>
-      <input type="text" name="type" class="form-control mb-2" value="<%= product.type %>">
-      <input type="number" name="Actual_Price" class="form-control mb-2" value="<%= product.Actual_Price %>">
-      <input type="number" name="Selling_Price" class="form-control mb-2" value="<%= product.Selling_Price %>">
-      <input type="number" name="Discount_Percentage" class="form-control mb-2" value="<%= product.Discount_Percentage %>">
+      <input type="text" name="name" class="form-control mb-2" required placeholder="Enter Product Name" value="<%= product.name %>" required>
+      <textarea name="Description" placeholder="Enter Product details" class="form-control mb-2"><%= product.Description %></textarea>
+      <div class="mb-2 d-flex gap-2">
+           <div>
+            <% if(product.type=="Sarees") { %>
+              <input class="form-check-input" type="radio" name="type" checked value="Sarees" id="sarees">
+              <label class="form-check-label" for="sarees">
+                Sarees
+              </label>
+              <%}else {%>
+                <input class="form-check-input" type="radio" name="type" value="Sarees" id="sarees">
+                <label class="form-check-label" for="sarees">
+                  Sarees
+                </label>
+            <%}%>
+           </div>
+           <div>
+            <% if(product.type=="Bags") { %>
+             <input class="form-check-input" type="radio" name="type" value="Bags" checked id="bags">
+            <label class="form-check-label" for="bags">
+              Bags
+            </label>
+            <%}else {%>
+             <input class="form-check-input" type="radio" name="type" value="Bags" id="bags">
+            <label class="form-check-label" for="bags">
+              Bags
+            </label>
+            <%}%>
+           </div>
+      </div>
+      <input type="text" name="group" required placeholder="Enter group name" class="form-control mb-2" value="<%= product.group %>">
+      <input type="number" name="Actual_Price" required placeholder="Enter actual price" class="form-control mb-2" value="<%= product.Actual_Price %>">
+      <input type="number" name="Selling_Price" required placeholder="Enter selling price" class="form-control mb-2" value="<%= product.Selling_Price %>">
+      <input type="number" name="Discount_Percentage" placeholder="Enter discount percentage" class="form-control mb-2" value="<%= product.Discount_Percentage %>">
       <input type="file" name="image" class="form-control mb-2">
       
       <button type="submit" class="btn btn-success">Save</button>
