@@ -1,13 +1,14 @@
 const router = require("express").Router();
+const { isLoggedIn } = require("../middlewares/isLoggedIn");
 const Product = require("../models/product-model");
 
-router.get("/", (req, res) => {
+router.get("/", isLoggedIn, (req, res) => {
   let error = req.flash("error");
   let success = req.flash("success");
   res.render("addproducts", { error, success });
 });
 
-router.get("/products/:type", async (req, res) => {
+router.get("/products/:type", isLoggedIn, async (req, res) => {
   try {
     let error = req.flash("error");
     let success = req.flash("success");
@@ -25,7 +26,5 @@ router.get("/products/:type", async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
-
-router.get("/delete", (req, res) => {});
 
 module.exports = router;

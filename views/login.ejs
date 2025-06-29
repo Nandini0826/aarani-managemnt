@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Products</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <style>
+    .custom-navbar {
+      background-color: #f9e5ea; /* Light Pink Marble */
+    }
+
+    body {
+      background-color: #fcfde7; /* very light pink background */
+    }
+
+    .form-container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 30px;
+      background: #fff0f5;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+    }
+
+    .form-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #E6BE8A;
+    }
+
+    .btn-custom {
+      background-color: #f7d6e0;
+      border: none;
+      color: #C28840;
+    }
+
+    .btn-custom:hover {
+      background-color: #c22570;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container d-flex">
+      <a class="navbar-brand" href="#">
+        <img src="/images/WhatsApp Image 2025-04-28 at 23.50.36_74b5c99d.jpg" alt="Aarani" width="70" height="58" class="d-inline-block align-text-top">
+      </a>
+    </div>
+  </nav>
+
+  <div class="form-container">
+    <h2 class="form-title">Login Admin</h2>
+    <% if (success.length>0) { %>
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <%= success %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% } %>
+    
+    <% if (error.length>0) { %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <%= error %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% } %>
+    <form autocomplete="off" action="/login" method="post">
+      
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" name="email" required id="email" placeholder="Enter email">
+      </div>
+      
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" required id="password" placeholder="Enter password">
+      </div>
+      
+      <div class="d-grid">
+        <button type="submit" class="btn btn-custom btn-lg">Login</button>
+      </div>
+    </form>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+

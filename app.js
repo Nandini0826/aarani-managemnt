@@ -4,17 +4,20 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const db = require("./config/mongoose-connection");
 const path = require("path");
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const expressSession = require("express-session");
 const flash = require("connect-flash");
 const MongoStore = require("connect-mongo");
 const indexRouter = require("./routes/index-router");
 const productRouter = require("./routes/product-router");
+const userRouter = require('./routes/user-router');
+const cookieParser = require("cookie-parser");
 
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(cookieParser());
 app.use(
   expressSession({
     resave: false, // resave: for saving everytime, false means to not save everytime if there is no change
@@ -28,7 +31,8 @@ app.use(
 );
 app.use(flash());
 
-app.use("/", indexRouter);
+app.use("/", userRouter);
+app.use("/home", indexRouter);
 app.use("/product", productRouter);
 
 app.listen(PORT, (err) => {

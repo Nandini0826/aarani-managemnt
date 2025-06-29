@@ -1,12 +1,13 @@
 const router = require("express").Router();
 const productModel = require("../models/product-model");
 const upload = require("../config/multer-config");
+const { isLoggedIn } = require("../middlewares/isLoggedIn");
 
 router.get("/", (req, res) => {
   res.send("Product");
 });
 
-router.post("/create", upload.single("image"), async (req, res) => {
+router.post("/create", isLoggedIn, upload.single("image"), async (req, res) => {
   try {
     let {
       name,
@@ -34,13 +35,13 @@ router.post("/create", upload.single("image"), async (req, res) => {
     } else {
       req.flash("error", "Error Occured");
     }
-    res.redirect("/");
+    res.redirect("/home");
   } catch (err) {
     console.log(err);
   }
 });
 
-router.post("/update/:id", upload.single("image"), async (req, res) => {
+router.post("/update/:id", isLoggedIn, upload.single("image"), async (req, res) => {
   try {
     const productId = req.params.id;
     const {
@@ -70,21 +71,21 @@ router.post("/update/:id", upload.single("image"), async (req, res) => {
     await productModel.findByIdAndUpdate(productId, updatedFields);
 
     req.flash("success", "Product Updated");
-    res.redirect("/products/All");
+    res.redirect("/home/products/All");
   } catch (error) {
     console.error("Error updating product:", error.message);
     res.status(500).send("Something went wrong");
   }
 });
 
-router.get("/delete/:id", async (req, res) => {
+router.get("/delete/:id", isLoggedIn, async (req, res) => {
   let product = await productModel.findById(req.params.id);
   if (!product) {
     req.flash("Product not found");
   } else {
     await productModel.findByIdAndDelete(req.params.id);
     req.flash("success", "product deleted Successfully!");
-    res.redirect("/products/All");
+    res.redirect("/home/products/All");
   }
 });
 
